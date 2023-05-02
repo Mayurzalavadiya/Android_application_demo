@@ -60,25 +60,7 @@ public class UserdataAdapter extends RecyclerView.Adapter<UserdataAdapter.UserVi
         return viewHolder;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull UserdataAdapter.UserViewHolder holder, int position) {
 
-        User user = users.get(position);
-        holder.fname.setText(user.getFirstName());
-        holder.lname.setText(user.getLastName());
-        holder.email.setText(user.getEmail());
-        holder.phone.setText(user.getPhone());
-        Glide.with(holder.itemView.getContext()).load(user.getImage()).centerCrop().placeholder(R.drawable.ic_menu).into(holder.imageView);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Utility.showToast(holder.itemView.getContext(), user.getFirstName());
-//                Toast.makeText(holder.itemView.getContext(), user.getFirstName(), Toast.LENGTH_SHORT).show();
-                clickdata.OnClick(user.getFirstName(),user.getLastName());
-            }
-        });
-    }
 
     @Override
     public int getItemCount() {
@@ -99,6 +81,26 @@ public class UserdataAdapter extends RecyclerView.Adapter<UserdataAdapter.UserVi
             phone = itemView.findViewById(R.id.phone);
             imageView = itemView.findViewById(R.id.image);
         }
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull UserdataAdapter.UserViewHolder holder, int position) {
+
+        User user = users.get(position);
+        holder.fname.setText(user.getFirstName());
+        holder.lname.setText(user.getLastName());
+        holder.email.setText(user.getEmail());
+        holder.phone.setText(user.getPhone()+" "+user.getCompany().getDepartment());
+        Glide.with(holder.itemView.getContext()).load(user.getImage()).centerCrop().placeholder(R.drawable.ic_menu).into(holder.imageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Utility.showToast(holder.itemView.getContext(), user.getFirstName());
+//                Toast.makeText(holder.itemView.getContext(), user.getFirstName(), Toast.LENGTH_SHORT).show();
+                clickdata.OnClick(user.getFirstName(),user.getLastName());
+            }
+        });
     }
 
     public interface Clickdata {

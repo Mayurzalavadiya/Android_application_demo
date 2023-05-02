@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SearchView;
@@ -19,6 +20,7 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.apicalldemo.model.UserListData;
+import com.myapplication.Activity.GoogleLoginActivity;
 import com.myapplication.Adapter.UserdataAdapter;
 import com.myapplication.R;
 import com.myapplication.api.RestClient;
@@ -30,6 +32,7 @@ import retrofit2.Response;
 
 public class TabFragment extends Fragment {
 
+    AppCompatButton button;
     RecyclerView rv;
 
     SearchView searchView;
@@ -63,6 +66,15 @@ public class TabFragment extends Fragment {
         });
 
         listdata();
+
+        button = view.findViewById(R.id.btn_google);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utility.Intent(getActivity(), GoogleLoginActivity.class);
+            }
+        });
 
         return view;
     }

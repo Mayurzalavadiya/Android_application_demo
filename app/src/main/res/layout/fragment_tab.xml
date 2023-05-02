@@ -20,7 +20,20 @@
        android:id="@+id/recycler"
        android:layout_below="@+id/searchViewResult"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"
+       android:layout_height="match_parent"
+       android:layout_above="@+id/btn_google"
+       android:layout_marginBottom="@dimen/_8sdp"
        android:background="@color/light_blue"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="Google"
+        android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/_5sdp"
+        />
 
 </RelativeLayout>
